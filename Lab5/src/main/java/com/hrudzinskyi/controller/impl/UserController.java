@@ -1,0 +1,44 @@
+package com.hrudzinskyi.controller.impl;
+
+import com.hrudzinskyi.controller.Controller;
+import com.hrudzinskyi.model.User;
+import com.hrudzinskyi.service.Service;
+import com.hrudzinskyi.service.impl.UserService;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public class UserController implements Controller<User> {
+
+    private final Service service = new UserService();
+
+    @Override
+    public List<User> findAll() throws SQLException {
+        return service.findAll();
+    }
+
+    @Override
+    public User findById(Integer id) throws SQLException {
+        return (User) service.findById(id);
+    }
+
+    @Override
+    public void create(User user) throws SQLException {
+        service.create(user);
+    }
+
+    @Override
+    public void update(User user) throws SQLException {
+        service.update(user);
+    }
+
+    @Override
+    public void delete(Integer id) throws SQLException {
+        service.delete(id);
+    }
+
+    @Override
+    public void delete(Integer firstId, Integer secondId) throws SQLException {
+        Controller.super.delete(firstId, secondId);
+    }
+}
