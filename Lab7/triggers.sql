@@ -2,30 +2,30 @@ use pharmacy_db;
 -- №1: забезпечити цілісність даних
 
 
--- POST
-drop trigger if exists post_update;
+-- Positions
+drop trigger if exists positions_update;
 
 DELIMITER //
-CREATE TRIGGER post_update 
+CREATE TRIGGER positions_update 
 BEFORE UPDATE
-on post
+on positions
 for EACH ROW
 BEGIN 
-IF (new.id != old.id and old.id in (select id from post )) then 
+IF (new.id != old.id and old.id in (select id from positions )) then 
 SIGNAL SQLSTATE '45000'
 set MESSAGE_TEXT = 'no such data found';
 end if;
 end // 
 DELIMITER ;
 
-drop trigger if exists post_delete;
+drop trigger if exists positions_delete;
 DELIMITER //
-CREATE TRIGGER post_delete
+CREATE TRIGGER positions_delete
 before DELETE 
-on post 
+on positions
 for EACH ROW
 BEGIN 
-if (old.id in (select post_id from employee)) then 
+if (old.id in (select positions_id from employee)) then 
 signal sqlstate '45000'
 set message_text = 'there is at least one person with such data, you cannot delete it';
 end if;
@@ -33,28 +33,28 @@ end //
 DELIMITER ;
 
 
--- EFFECT ZONE 
+-- Affected Area 
 
 
-drop trigger if exists effect_zone_update;
+drop trigger if exists affected_area_update;
 DELIMITER //
-CREATE TRIGGER effect_zone_update
+CREATE TRIGGER affected_area_update
 before update
-on effect_zone 
+on affected_area
 for each row 
 BEGIN 
-IF (new.id != old.id and old.id in (select id from effect_zone )) then 
+IF (new.id != old.id and old.id in (select id from affected_area )) then 
 SIGNAL SQLSTATE '45000'
 set MESSAGE_TEXT = 'no such data found';
 end if;
 end // 
 DELIMITER ;
 
-drop trigger if exists effect_zone_delete;
+drop trigger if exists affected_area_delete;
 DELIMITER //
-CREATE TRIGGER effect_zone_delete
+CREATE TRIGGER affected_area_delete
 before  DELETE 
-on effect_zone
+on affected_area
 for each row 
 BEGIN 
 if (old.id in (select zone_id from medicine_zone)) then 
@@ -140,7 +140,7 @@ before insert
 on employee
 for each row
 begin
-	    if (new.post_id not in (select id from post)) then
+	    if (new.positions_id not in (select id from positions)) then
 			signal sqlstate '45000'
 			set message_text = 'FK error. no such data found';
         end if;
@@ -321,11 +321,11 @@ end
 DELIMITER ;
 	
 -- 4 
-drop trigger if exists ban_modify_on_post;
+drop trigger if exists ban_modify_on_positions;
 DELIMITER //
-CREATE TRIGGER ban_modify_on_post
+CREATE TRIGGER ban_modify_on_positions
 before update 
-on post 
+on positions
 for each row
 begin 
 signal sqlstate '45000'

@@ -5,17 +5,17 @@ DELIMITER //
 CREATE PROCEDURE insert_into_employee(
 name VARCHAR(45),
 surname VARCHAR(45),
-middle_name VARCHAR(45),
+last_name VARCHAR(45),
 identity_number VARCHAR(20),
 passport_data VARCHAR(20),
 experience DECIMAL(10,1),
 birth_date DATE,
-post_id INT,
+positions_id INT,
 pharmacy_id INT 
 )
 BEGIN
-INSERT INTO employee(name,surname,middle_name,identity_number,passport_data,experience,birth_date,post_id, pharmacy_id)
-VALUES(name,surname,middle_name,identity_number,passport_data,experience,birth_date,post_id, pharmacy_id);
+INSERT INTO employee(name,surname,last_name,identity_number,passport_data,experience,birth_date,positions_id, pharmacy_id)
+VALUES(name,surname,last_name,identity_number,passport_data,experience,birth_date,positions_id, pharmacy_id);
 END //
 DELIMITER ;
 
@@ -29,7 +29,7 @@ zone_id INT
 )
 BEGIN
 IF (SELECT id FROM medicine_list  where id = medicine_id)
-AND  (SELECT id FROM effect_zone where id = zone_id)
+AND  (SELECT id FROM affected_area where id = zone_id)
 THEN
 INSERT INTO  medicine_zone(medicine_id, zone_id) VALUES (medicine_id, zone_id);
 END IF ;
