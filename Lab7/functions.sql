@@ -34,4 +34,4 @@ END //
 DELIMITER ;
 
 -- select get_min_working_experience();
--- select name, surname, middle_name, identity_number, passport_data, experience, birth_date,get_bulding_name_num(id) as solution from employee;
+-- select name, surname, last_name, identity_number, passport_data, experience, birth_date,get_bulding_name_num(id) as solution from employee;

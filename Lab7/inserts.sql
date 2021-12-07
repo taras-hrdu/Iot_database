@@ -5,7 +5,7 @@ INSERT INTO street (name) VALUES ('Oxford '),
 ('Abbey '), ('Bond '),  ( 'Piccadilly'),( 'Baker '),
 ( 'Savile '),('Carnaby '), ('Regent '), ('Jermyn '),( 'Downing ');
 
-INSERT INTO post ( name) VALUES ( 'nurse'),
+INSERT INTO positions ( name) VALUES ( 'nurse'),
 ('doctor'),('military'),('dean'),('teacher'),
 ('director'),('academic'),('instructor');
 
@@ -23,12 +23,12 @@ VALUES ('1', 'Gould','1', '23', 'www.gouldeffect_zone.com', '9:00', '18:00', '1'
 ('10', 'drugs', '2','42', 'www.drugstore.ua', '9:45', '21:45', '0', '0');
 
 
-INSERT INTO effect_zone (name) VALUES ('lungs'),
+INSERT INTO affected_area (name) VALUES ('lungs'),
 ('knee'), ('bones'),('neck'), ('back'),
 ('stomach'),('liver'),('tooth'),('eyes'), ('ears');
 
 
-INSERT INTO employee (name, surname, middle_name, identity_number, passport_data, experience, birth_date, post_id, pharmacy_id) VALUES 
+INSERT INTO employee (name, surname, last_name, identity_number, passport_data, experience, birth_date, positions_id, pharmacy_id) VALUES 
 ('Taras', 'Romeo', 'Tarasovych', '1234342674', 'fn2123111', '2 ', '2002-12-12', '1', '1'),
 ('Andriy', 'Igor', 'Igor', '1213423100', 'af1901930', '0 ', '2000-11-07', '3', '1'),
 ('Lewis', 'Ihor', 'Misha', '3221213400', 'at3003291', '4 ', '2003-09-15', '5', '4'),

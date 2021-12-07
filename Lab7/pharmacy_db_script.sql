@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS medicine_zone;
 DROP TABLE IF EXISTS pharmacy;
 DROP TABLE IF EXISTS medicine_list;
 DROP TABLE IF EXISTS employee;
-DROP TABLE IF EXISTS post;
-DROP TABLE IF EXISTS effect_zone;
+DROP TABLE IF EXISTS positions;
+DROP TABLE IF EXISTS affected_area;
 DROP TABLE IF EXISTS street;
 
 
@@ -21,19 +21,19 @@ PRIMARY KEY(id)
 );
 
 -- ------------------------------------------------- --
---                  EFFECT ZONE                      --
+--                  Affected area                    --
 -- ------------------------------------------------- --
 
-CREATE TABLE effect_zone (
+CREATE TABLE affected_area (
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(45) NOT NULL,
 PRIMARY KEY (id)
 );  
 -- ------------------------------------------------- --
---                       POST                        --              
+--                       Positions                        --              
 -- ------------------------------------------------- --
 
-CREATE TABLE post (
+CREATE TABLE positions (
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(25) NOT NULL,
 PRIMARY KEY (id)
@@ -45,12 +45,12 @@ CREATE TABLE employee (
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(45) NOT NULL,
 surname VARCHAR(45) NOT NULL,
-middle_name VARCHAR(45) NOT NULL,
+last_name VARCHAR(45) NOT NULL,
 identity_number VARCHAR(20) NOT NULL,
 passport_data VARCHAR(20) NOT NULL,
 experience DECIMAL(10,1) NOT NULL,
 birth_date DATE NOT NULL,
-post_id INT NOT NULL,
+positions_id INT NOT NULL,
 pharmacy_id INT NOT NULL,
 PRIMARY KEY (id)
 ); 
